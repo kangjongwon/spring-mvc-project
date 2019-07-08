@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osc.work.mapper.OscMapper">
+ 
+    <select id="selectTestList" parameterType="com.osc.work.model.OscModel" resultType="com.osc.work.model.OscModel">
+        SELECT
+        	id
+        	,subject
+        	,name
+        	,regDt
+        FROM
+        	OSC_TEST
+    </select>
+    
+    <insert id="testInsert" parameterType="com.osc.work.model.OscModel">
+        INSERT INTO OSC_TEST(
+        	subject
+        	,name
+        	,regDt
+        )VALUES(
+        	#{subject}
+        	,#{name}
+        	,now()
+        )
+    </insert>
+    
+	<select id="testDetail" parameterType="com.osc.work.model.OscModel" resultType="com.osc.work.model.OscModel">
+        SELECT
+        	id
+        	,subject
+        	,name
+        	,regDt
+        FROM
+        	OSC_TEST
+        WHERE
+        	id = #{id}
+    </select>
+    
+    <insert id="testUpdate" parameterType="com.osc.work.model.OscModel">
+        UPDATE OSC_TEST
+        SET 
+        	subject = #{subject}
+        	,name = #{tempId}
+        WHERE 
+        	id = #{id}
+    </insert>
+ 
+</mapper>
